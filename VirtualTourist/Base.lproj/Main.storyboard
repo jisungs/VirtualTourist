@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a6V-Bs-jrO">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,26 +10,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="2z7-pC-E4u">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <navigationController id="a6V-Bs-jrO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mml-Bm-kVL">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8vV-Lh-x6j" kind="relationship" relationship="rootViewController" id="KDd-XX-IKd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xe9-Bi-gzV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-383" y="246"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="7p2-NJ-T6L">
+            <objects>
+                <viewController id="8vV-Lh-x6j" customClass="VTMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3JM-OP-mMi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypb-fH-7Og">
-                                <rect key="frame" x="170" y="240" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iUx-ot-Yvx">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </mapView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="0n8-lz-gTf"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="leading" secondItem="3JM-OP-mMi" secondAttribute="leading" id="ldo-X6-9CE"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="centerX" secondItem="3JM-OP-mMi" secondAttribute="centerX" id="nqB-eW-Zgi"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="centerY" secondItem="3JM-OP-mMi" secondAttribute="centerY" id="zG4-Hl-vFl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8av-Sd-0Se"/>
                     </view>
+                    <navigationItem key="navigationItem" id="RnY-cc-rGk"/>
+                    <connections>
+                        <outlet property="mapVie" destination="iUx-ot-Yvx" id="jZ7-Ak-gfB"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IX1-ky-D0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="445.60000000000002" y="244.22788605697153"/>
         </scene>
     </scenes>
 </document>
