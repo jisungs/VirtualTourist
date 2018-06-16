@@ -16,11 +16,35 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    //MARK: - variable
+    var annotations = [MKPointAnnotation]()
+    var pin : AnnotationPin!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view:MKAnnotationView) {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
+            pinView!.rightCalloutAccessoryView  = UIButton(type: .detailDisclosure)
+        }
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, annotationView view:MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        <#code#>
     }
 }

@@ -41,8 +41,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iUx-ot-Yvx" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="0n8-lz-gTf"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="top" secondItem="3JM-OP-mMi" secondAttribute="top" id="lPj-2z-mJB"/>
                             <constraint firstItem="iUx-ot-Yvx" firstAttribute="leading" secondItem="3JM-OP-mMi" secondAttribute="leading" id="ldo-X6-9CE"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="nd5-y6-vBs"/>
                             <constraint firstItem="iUx-ot-Yvx" firstAttribute="centerX" secondItem="3JM-OP-mMi" secondAttribute="centerX" id="nqB-eW-Zgi"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="leading" secondItem="8av-Sd-0Se" secondAttribute="leading" id="odC-ak-rue"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="trailing" secondItem="8av-Sd-0Se" secondAttribute="trailing" id="vxV-l8-d0b"/>
                             <constraint firstItem="iUx-ot-Yvx" firstAttribute="centerY" secondItem="3JM-OP-mMi" secondAttribute="centerY" id="zG4-Hl-vFl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8av-Sd-0Se"/>
