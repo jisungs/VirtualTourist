@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		961940AB20D4AD5E00FAE390 /* AnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961940AA20D4AD5E00FAE390 /* AnnotationPin.swift */; };
+		961BB1ED20D4F01E0045B184 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961BB1EC20D4F01E0045B184 /* GeneralViewController.swift */; };
 		965371A320D30AB5009AC1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965371A220D30AB5009AC1D7 /* AppDelegate.swift */; };
 		965371A520D30AB5009AC1D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965371A420D30AB5009AC1D7 /* ViewController.swift */; };
 		965371A820D30AB5009AC1D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965371A620D30AB5009AC1D7 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		961940AA20D4AD5E00FAE390 /* AnnotationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPin.swift; sourceTree = "<group>"; };
+		961BB1EC20D4F01E0045B184 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		9653719F20D30AB5009AC1D7 /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965371A220D30AB5009AC1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		965371A420D30AB5009AC1D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				965371A220D30AB5009AC1D7 /* AppDelegate.swift */,
 				965371A420D30AB5009AC1D7 /* ViewController.swift */,
 				961940AA20D4AD5E00FAE390 /* AnnotationPin.swift */,
+				961BB1EC20D4F01E0045B184 /* GeneralViewController.swift */,
 				96E0A3A520D4601E00AF155A /* ViewController */,
 				965371A620D30AB5009AC1D7 /* Main.storyboard */,
 				965371A920D30AB6009AC1D7 /* Assets.xcassets */,
@@ -151,6 +154,7 @@
 			files = (
 				961940AB20D4AD5E00FAE390 /* AnnotationPin.swift in Sources */,
 				96E0A3A420D4600D00AF155A /* VTMapViewController.swift in Sources */,
+				961BB1ED20D4F01E0045B184 /* GeneralViewController.swift in Sources */,
 				965371A520D30AB5009AC1D7 /* ViewController.swift in Sources */,
 				965371A320D30AB5009AC1D7 /* AppDelegate.swift in Sources */,
 			);

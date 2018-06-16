@@ -34,17 +34,20 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
             pinView!.canShowCallout = true
             pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView  = UIButton(type: .detailDisclosure)
+        } else {
+          pinView?.annotation = annotation
         }
+        return pinView
     }
     
     
     func mapView(_ mapView: MKMapView, annotationView view:MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            
+            showAlert(title: "Error", message: "Failed to connect link")
         }
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        <#code#>
+   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    <#code#>
     }
 }
