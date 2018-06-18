@@ -29,7 +29,7 @@
         <!--Map View Controller-->
         <scene sceneID="7p2-NJ-T6L">
             <objects>
-                <viewController id="8vV-Lh-x6j" customClass="VTMapViewController" sceneMemberID="viewController">
+                <viewController id="8vV-Lh-x6j" customClass="VTMapViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3JM-OP-mMi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,7 +53,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RnY-cc-rGk"/>
                     <connections>
-                        <outlet property="mapVie" destination="iUx-ot-Yvx" id="jZ7-Ak-gfB"/>
+                        <outlet property="mapView" destination="iUx-ot-Yvx" id="zmZ-em-6ah"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IX1-ky-D0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
