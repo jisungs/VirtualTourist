@@ -48,6 +48,21 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
     }
     
    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    <#code#>
+    
+    guard let annotation = view.annotation else{
+        return
+    }
+    let long = String(annotation.coordinate.longitude)
+    let lat = String(annotation.coordinate.latitude)
+    
+    
+    }
+    
+    func loadPin(latitude : String, longitude: String) -> Pin? {
+        let predicate = NSPredicate(format: "latitude == %@ and longtitude == %@", latitude, longitude)
+        var pin: Pin?
+        
+        return pin
+        
     }
 }
