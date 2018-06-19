@@ -58,11 +58,4 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
     
     }
     
-    func loadPin(latitude : String, longitude: String) -> Pin? {
-        let predicate = NSPredicate(format: "latitude == %@ and longtitude == %@", latitude, longitude)
-        var pin: Pin?
-        
-        return pin
-        
-    }
 }
