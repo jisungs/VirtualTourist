@@ -15,21 +15,44 @@ class DataController {
     let coordinator : NSPersistentStoreCoordinator
     let persistentContext : NSManagedObjectContext
     let persistentContainer:NSPersistentContainer
+    let backgroundContext:NSManagedObjectContext
     let context : NSManagedObjectContext
+    let fileManager = FileManager.default
     
-    init(modelName:String){
+    init(modelName: String){
+        
+ 
         persistentContainer = NSPersistentContainer(name: modelName)
         context  = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         
-        
-        
+        self.model = model
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         
         persistentContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         persistentContext.persistentStoreCoordinator = coordinator
         context.parent = persistentContext
         
-        return Pin
+        backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundContext.parent = context
+        
+        
+        func addStoreCoordinator(){
+            
+        }
+        
+        func fetchPin(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil)throws -> Pin? {
+            let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            fr.predicate = predicate
+            if let sorting = sorting {
+                fr.sortDescriptors = [sorting]
+            }
+            
+            guard let pin = (try context.fetch(fr) as! [Pin]).first else {
+                return nil
+            }
+          return pin
+        }
+        
     }
     
     var viewContext:NSManagedObjectContext {
