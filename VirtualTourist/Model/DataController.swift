@@ -10,10 +10,26 @@ import Foundation
 import CoreData
 
 class DataController {
+    
+    let model : NSManagedObjectModel
+    let coordinator : NSPersistentStoreCoordinator
+    let persistentContext : NSManagedObjectContext
     let persistentContainer:NSPersistentContainer
+    let context : NSManagedObjectContext
     
     init(modelName:String){
         persistentContainer = NSPersistentContainer(name: modelName)
+        context  = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        
+        
+        
+        coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+        
+        persistentContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        persistentContext.persistentStoreCoordinator = coordinator
+        context.parent = persistentContext
+        
+        return Pin
     }
     
     var viewContext:NSManagedObjectContext {
@@ -27,5 +43,12 @@ class DataController {
             }
             completion?()
         }
+    }
+    
+   static func shared() -> DataController {
+        struct Singleton {
+           static var shared = DataController(modelName: "VirtualTourist")
+        }
+        return Singleton.shared
     }
 }
