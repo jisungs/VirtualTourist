@@ -12,6 +12,7 @@ import CoreData
 class DataController {
     
     let model : NSManagedObjectModel
+    let modelURL:URL
     let coordinator : NSPersistentStoreCoordinator
     let persistentContext : NSManagedObjectContext
     let persistentContainer:NSPersistentContainer
@@ -19,13 +20,26 @@ class DataController {
     let context : NSManagedObjectContext
     let fileManager = FileManager.default
     
-    init(modelName: String){
+    init?(modelName: String){
         
  
         persistentContainer = NSPersistentContainer(name: modelName)
         context  = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         
+        // Assumes the model is in the main bundle
+        guard let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd") else {
+            print("Unable to find \(modelName)in the main bundle")
+            return nil
+        }
+        self.modelURL = modelURL
+        
+        // Try to create the model from the URL
+        guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
+            print("unable to create a model from \(modelURL)")
+            return nil
+        }
         self.model = model
+        
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         
         persistentContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
@@ -72,6 +86,6 @@ class DataController {
         struct Singleton {
            static var shared = DataController(modelName: "VirtualTourist")
         }
-        return Singleton.shared
+    return Singleton.shared!
     }
 }

@@ -17,27 +17,7 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer){
         showAlert(title: "long Pressed", message: "long Press succeeded")
-        
-        let location = sender.location(in: mapView)
-        let locationCorrdinator = mapView.convert(location, toCoordinateFrom: mapView)
-        
-        if sender.state == .began {
-            pin = MKPointAnnotation()
-            pin!.coordinate = locationCorrdinator
             
-            print("\(#function) Coordinate: \(locationCorrdinator.latitude),\(locationCorrdinator.longitude)")
-            mapView.addAnnotation(pin!)
-        } else if sender.state == .changed {
-            pin!.coordinate = locationCorrdinator
-        } else if sender.state == .ended {
-            
-            _ = Pin(
-                entity : String(pin!.coordinate.latitude),
-                insertInto : String(pin!.coordinate.longitude),
-                context: DataController.shared().context
-            )
-            
-        }
     }
     
     //MARK: - variable
