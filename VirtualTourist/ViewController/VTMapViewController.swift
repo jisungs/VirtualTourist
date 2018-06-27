@@ -16,26 +16,22 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer){
-        showAlert(title: "long Pressed", message: "long Press succeeded")
+       // showAlert(title: "long Pressed", message: "long Press succeeded")
         
+        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+            switch newState {
+            case .starting:
+                view.dragState = .dragging
+            case .ending, .canceling:
+                view.dragState = .none
+            default: break
+            }
+        }
         
-            
     }
     
     //MARK: - variable
     var annotations = [MKPointAnnotation]()
-<<<<<<< HEAD
-    var pin : MKPointAnnotation? = nil
-    var longPressRecongnizer = UILongPressGestureRecognizer()
-    
-    fileprivate func longPressRecongnizers() {
-        longPressRecongnizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
-        longPressRecongnizer.minimumPressDuration = 0.5
-        longPressRecongnizer.delegate = self as? UIGestureRecognizerDelegate
-        mapView.addGestureRecognizer(longPressRecongnizer)
-    }
-    
-=======
     var annotationPin : MKPointAnnotation? = nil
     var longPressRecongizer = UILongPressGestureRecognizer()
     
@@ -47,16 +43,10 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
->>>>>>> 437d0ed4a52461990c92a9fb64ef048a4a387b70
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        
-<<<<<<< HEAD
-        longPressRecongnizers()
-=======
         longPressRecongizers()
->>>>>>> 437d0ed4a52461990c92a9fb64ef048a4a387b70
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
