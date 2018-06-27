@@ -24,6 +24,7 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: - variable
     var annotations = [MKPointAnnotation]()
+<<<<<<< HEAD
     var pin : MKPointAnnotation? = nil
     var longPressRecongnizer = UILongPressGestureRecognizer()
     
@@ -34,11 +35,28 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
         mapView.addGestureRecognizer(longPressRecongnizer)
     }
     
+=======
+    var annotationPin : MKPointAnnotation? = nil
+    var longPressRecongizer = UILongPressGestureRecognizer()
+    
+    func longPressRecongizers() {
+        longPressRecongizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+        longPressRecongizer.minimumPressDuration = 0.5
+        longPressRecongizer.delegate = self as? UIGestureRecognizerDelegate
+        mapView.addGestureRecognizer(longPressRecongizer)
+        
+    }
+    
+>>>>>>> 437d0ed4a52461990c92a9fb64ef048a4a387b70
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         
+<<<<<<< HEAD
         longPressRecongnizers()
+=======
+        longPressRecongizers()
+>>>>>>> 437d0ed4a52461990c92a9fb64ef048a4a387b70
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
