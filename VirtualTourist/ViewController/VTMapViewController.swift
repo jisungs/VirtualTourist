@@ -18,14 +18,26 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer){
        // showAlert(title: "long Pressed", message: "long Press succeeded")
         
-        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
-            switch newState {
-            case .starting:
-                view.dragState = .dragging
-            case .ending, .canceling:
-                view.dragState = .none
-            default: break
-            }
+       let location = sender.location(in: mapView)
+        let locCoord = mapView.convert(location, toCoordinateFrom: mapView)
+        
+        if sender.state == .began {
+            annotationPin = MKPointAnnotation()
+            annotationPin?.coordinate = locCoord
+            
+            print("\(#function) Coordinate: \(locCoord.latitude),\(locCoord.longitude)")
+            
+            mapView.addAnnotation(annotationPin!)
+            
+        } else if sender.state == .changed {
+            annotationPin?.coordinate = locCoord
+        } else if sender.state == .ended {
+            
+            _ = Pins(
+                latitude: String(annotationPin!.coordinate.latitude),
+                longitude: String(annotationPin!.coordinate.longitude),
+                context: DataController.shared().context
+            )
         }
         
     }
