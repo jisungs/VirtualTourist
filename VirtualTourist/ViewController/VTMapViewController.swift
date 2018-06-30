@@ -38,6 +38,7 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
                 longitude: String(annotationPin!.coordinate.longitude),
                 context: DataController.shared().context
             )
+            save()
         }
         
     }

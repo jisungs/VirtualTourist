@@ -19,4 +19,12 @@ extension UIViewController {
         }))
         self.present(alert, animated: true)
     }
+    
+    func save() {
+        do {
+            try DataController.shared().saveContext()
+        } catch {
+            showAlert(title: "Error", message: "Error Occured: \(error) ")
+        }
+    }
 }

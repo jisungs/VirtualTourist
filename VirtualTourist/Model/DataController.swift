@@ -76,3 +76,27 @@ class DataController {
     return Singleton.shared!
     }
 }
+
+extension DataController {
+    
+    func saveContext() {
+        context.performAndWait {
+            if self.context.hasChanges{
+                do {
+                    try self.context.save()
+                } catch {
+                    print("Error while saving context:\(error)")
+                }
+                
+                self.persistentContext.perform() {
+                    do {
+                        try self.persistentContext.save()
+                    }catch {
+                        print("Error while saving persisting context:\(error)")
+                    }
+                }
+            }
+        }
+    }
+}
+
