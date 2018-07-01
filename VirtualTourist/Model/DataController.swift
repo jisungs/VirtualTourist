@@ -15,17 +15,22 @@ class DataController {
     let modelURL:URL
     let coordinator : NSPersistentStoreCoordinator
     let persistentContext : NSManagedObjectContext
-    let persistentContainer:NSPersistentContainer
     let backgroundContext:NSManagedObjectContext
     let context : NSManagedObjectContext
     let fileManager = FileManager.default
     
+    
+    static func shared() -> DataController {
+        struct Singleton {
+            static var shared = DataController(modelName: "VirtualTourist")
+        }
+        return Singleton.shared!
+    }
+    
+    
     init?(modelName: String){
         
  
-        persistentContainer = NSPersistentContainer(name: modelName)
-        context  = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        
         // Assumes the model is in the main bundle
         guard let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd") else {
             print("Unable to find \(modelName)in the main bundle")
@@ -40,41 +45,51 @@ class DataController {
         }
         self.model = model
         
+        
         coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         
         persistentContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         persistentContext.persistentStoreCoordinator = coordinator
+        
+        context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         context.parent = persistentContext
         
         backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         backgroundContext.parent = context
         
+        let fileManager = FileManager.default
         
         func addStoreCoordinator(){
             
         }
         
-    }
-    
-    var viewContext:NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
-    
-    func load(completion: (()->Void)? = nil){
-        persistentContainer.loadPersistentStores { storeDescription, error in
-            guard error == nil else {
-                fatalError(error!.localizedDescription)
+        func fetchPin(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Pin? {
+            let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            fr.predicate = predicate
+            if let sorting = sorting {
+                fr.sortDescriptors = [sorting]
             }
-            completion?()
+            guard let pin = (try context.fetch(fr) as! [Pin]).first else {
+                return nil
+            }
+            return pin
+        }
+        
+        func fetchAllPins(_ predicate: NSPredicate? = nil, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Pin]? {
+            let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            fr.predicate = predicate
+            if let sorting = sorting {
+                fr.sortDescriptors = [sorting]
+            }
+            guard let pin = try context.fetch(fr) as? [Pin] else {
+                return nil
+            }
+            return pin
         }
     }
     
-   static func shared() -> DataController {
-        struct Singleton {
-           static var shared = DataController(modelName: "VirtualTourist")
-        }
-    return Singleton.shared!
-    }
+    
+   
 }
 
 extension DataController {
