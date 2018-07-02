@@ -11,6 +11,10 @@ import UIKit
 
 extension UIViewController {
     
+    var appDelegate: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+    
     //MARK : - show Alert function
     func showAlert(title: String, message: String, action: (()->Void)? = nil){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

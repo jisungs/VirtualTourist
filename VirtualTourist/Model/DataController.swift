@@ -19,12 +19,11 @@ class DataController {
     let context : NSManagedObjectContext
     let fileManager = FileManager.default
     
-    
-    static func shared() -> DataController {
+    class func sharedInstance() -> DataController {
         struct Singleton {
-            static var shared = DataController(modelName: "VirtualTourist")
+            static let sharedInstance = DataController(modelName: "VirtualTourist")
         }
-        return Singleton.shared!
+        return Singleton.sharedInstance!
     }
     
     
@@ -94,7 +93,7 @@ class DataController {
 
 extension DataController {
     
-    func saveContext() {
+    func saveContext() throws {
         context.performAndWait {
             if self.context.hasChanges{
                 do {
@@ -110,6 +109,25 @@ extension DataController {
                         print("Error while saving persisting context:\(error)")
                     }
                 }
+            }
+        }
+    }
+    
+    func autoSave(_ delayInSeconds : Int) {
+        
+        if delayInSeconds > 0 {
+            do {
+                try saveContext()
+                print("Autosaving")
+            } catch {
+                print("Error while autosaving")
+            }
+            
+            let delayInNanoSeconds = UInt64(delayInSeconds) * NSEC_PER_SEC
+            let time = DispatchTime.now() + Double(Int64(delayInNanoSeconds)) / Double(NSEC_PER_SEC)
+            
+            DispatchQueue.main.asyncAfter(deadline: time) {
+                self.autoSave(delayInSeconds)
             }
         }
     }
