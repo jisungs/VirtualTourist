@@ -37,17 +37,20 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iUx-ot-Yvx">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDV-FM-dBJ" userLabel="footer View">
+                                <rect key="frame" x="0.0" y="503" width="320" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="0n8-lz-gTf"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="TVY-eF-cdc"/>
+                            <constraint firstItem="hDV-FM-dBJ" firstAttribute="centerY" secondItem="3JM-OP-mMi" secondAttribute="centerY" id="WWJ-cj-yrf"/>
+                            <constraint firstItem="hDV-FM-dBJ" firstAttribute="centerX" secondItem="3JM-OP-mMi" secondAttribute="centerX" id="Wvf-6V-lsJ"/>
                             <constraint firstItem="iUx-ot-Yvx" firstAttribute="top" secondItem="3JM-OP-mMi" secondAttribute="top" id="lPj-2z-mJB"/>
                             <constraint firstItem="iUx-ot-Yvx" firstAttribute="leading" secondItem="3JM-OP-mMi" secondAttribute="leading" id="ldo-X6-9CE"/>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="nd5-y6-vBs"/>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="centerX" secondItem="3JM-OP-mMi" secondAttribute="centerX" id="nqB-eW-Zgi"/>
                             <constraint firstItem="iUx-ot-Yvx" firstAttribute="leading" secondItem="8av-Sd-0Se" secondAttribute="leading" id="odC-ak-rue"/>
                             <constraint firstItem="iUx-ot-Yvx" firstAttribute="trailing" secondItem="8av-Sd-0Se" secondAttribute="trailing" id="vxV-l8-d0b"/>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="centerY" secondItem="3JM-OP-mMi" secondAttribute="centerY" id="zG4-Hl-vFl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8av-Sd-0Se"/>
                     </view>
@@ -58,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IX1-ky-D0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="445.60000000000002" y="244.22788605697153"/>
+            <point key="canvasLocation" x="442.5" y="242.95774647887325"/>
         </scene>
     </scenes>
 </document>

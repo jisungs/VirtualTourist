@@ -21,9 +21,9 @@ class DataController {
     
     class func sharedInstance() -> DataController {
         struct Singleton {
-            static let sharedInstance = DataController(modelName: "VirtualTourist")
+            static let sharedInstance = DataController(modelName: "VirtualTourist")!
         }
-        return Singleton.sharedInstance!
+        return Singleton.sharedInstance
     }
     
     
