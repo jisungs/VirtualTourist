@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		961BB1ED20D4F01E0045B184 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961BB1EC20D4F01E0045B184 /* GeneralViewController.swift */; };
+		961E257920EA2676009A8851 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E257820EA2676009A8851 /* Client.swift */; };
 		965371A320D30AB5009AC1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965371A220D30AB5009AC1D7 /* AppDelegate.swift */; };
 		965371A520D30AB5009AC1D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965371A420D30AB5009AC1D7 /* ViewController.swift */; };
 		965371A820D30AB5009AC1D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 965371A620D30AB5009AC1D7 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		961BB1EC20D4F01E0045B184 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
+		961E257820EA2676009A8851 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		9653719F20D30AB5009AC1D7 /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		965371A220D30AB5009AC1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		965371A420D30AB5009AC1D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,9 +47,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		961E257720EA2640009A8851 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				961E257820EA2676009A8851 /* Client.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		9653719620D30AB5009AC1D7 = {
 			isa = PBXGroup;
 			children = (
+				961E257720EA2640009A8851 /* Networking */,
 				965371A120D30AB5009AC1D7 /* VirtualTourist */,
 				965371A020D30AB5009AC1D7 /* Products */,
 			);
@@ -172,6 +183,7 @@
 				96E0A3A420D4600D00AF155A /* VTMapViewController.swift in Sources */,
 				961BB1ED20D4F01E0045B184 /* GeneralViewController.swift in Sources */,
 				965371A520D30AB5009AC1D7 /* ViewController.swift in Sources */,
+				961E257920EA2676009A8851 /* Client.swift in Sources */,
 				965371A320D30AB5009AC1D7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
