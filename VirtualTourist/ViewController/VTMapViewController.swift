@@ -18,7 +18,7 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer){
        // showAlert(title: "long Pressed", message: "long Press succeeded")
         
-       let location = sender.location(in: mapView)
+        let location = sender.location(in: mapView)
         let locCoord = mapView.convert(location, toCoordinateFrom: mapView)
         
         if sender.state == .began {
