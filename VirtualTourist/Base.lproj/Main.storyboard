@@ -67,8 +67,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8av-Sd-0Se"/>
                     </view>
-                    <navigationItem key="navigationItem" id="RnY-cc-rGk"/>
+                    <navigationItem key="navigationItem" id="RnY-cc-rGk">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="q0P-YK-4td">
+                            <connections>
+                                <action selector="editButtonCliked:" destination="8vV-Lh-x6j" id="7zq-a0-5HB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="q0P-YK-4td" id="5sw-LS-RPk"/>
+                        <outlet property="footerView" destination="hDV-FM-dBJ" id="NqR-8T-f4M"/>
                         <outlet property="mapView" destination="iUx-ot-Yvx" id="zmZ-em-6ah"/>
                     </connections>
                 </viewController>

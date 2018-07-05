@@ -10,11 +10,14 @@ import Foundation
 import UIKit
 import MapKit
 
-class VTMapViewController: UIViewController, MKMapViewDelegate {
+class VTMapViewController: UIViewController {
   
     //MARK: - Outlets
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
     
     //MARK: - variable
     var annotations = [MKPointAnnotation]()
@@ -26,6 +29,12 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         longPressRecongizers()
+        footerView.isHidden = true
+    }
+
+    @IBAction func editButtonCliked(_ sender: Any) {
+        footerView.isHidden = false
+
     }
     
     
@@ -69,6 +78,10 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
         super.setEditing(editing, animated: animated)
     }
  
+
+}
+
+extension VTMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseId = "pin"
@@ -80,7 +93,7 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
             pinView!.pinTintColor = .red
             pinView!.rightCalloutAccessoryView  = UIButton(type: .detailDisclosure)
         } else {
-          pinView?.annotation = annotation
+            pinView?.annotation = annotation
         }
         return pinView
     }
@@ -92,6 +105,5 @@ class VTMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-
     
 }
