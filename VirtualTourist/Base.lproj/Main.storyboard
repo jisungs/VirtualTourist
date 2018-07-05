@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="a6V-Bs-jrO">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,26 +32,38 @@
             <objects>
                 <viewController id="8vV-Lh-x6j" customClass="VTMapViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3JM-OP-mMi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="iUx-ot-Yvx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </mapView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDV-FM-dBJ" userLabel="footer View">
-                                <rect key="frame" x="0.0" y="503" width="320" height="65"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleAspectFit" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDV-FM-dBJ" userLabel="footer View">
+                                <rect key="frame" x="0.0" y="401.5" width="320" height="78.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Pin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuv-vH-tbS">
+                                        <rect key="frame" x="93" y="20" width="135" height="37"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.72264649101145817" blue="0.16738565411964013" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hDV-FM-dBJ" secondAttribute="height" multiplier="16:3" constant="-100" id="Mfe-IA-1cu"/>
+                                    <constraint firstItem="nuv-vH-tbS" firstAttribute="centerY" secondItem="hDV-FM-dBJ" secondAttribute="centerY" id="Ye7-8r-seJ"/>
+                                    <constraint firstItem="nuv-vH-tbS" firstAttribute="centerX" secondItem="hDV-FM-dBJ" secondAttribute="centerX" id="iqi-fn-WqH"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="TVY-eF-cdc"/>
-                            <constraint firstItem="hDV-FM-dBJ" firstAttribute="centerY" secondItem="3JM-OP-mMi" secondAttribute="centerY" id="WWJ-cj-yrf"/>
-                            <constraint firstItem="hDV-FM-dBJ" firstAttribute="centerX" secondItem="3JM-OP-mMi" secondAttribute="centerX" id="Wvf-6V-lsJ"/>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="top" secondItem="3JM-OP-mMi" secondAttribute="top" id="lPj-2z-mJB"/>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="leading" secondItem="3JM-OP-mMi" secondAttribute="leading" id="ldo-X6-9CE"/>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="leading" secondItem="8av-Sd-0Se" secondAttribute="leading" id="odC-ak-rue"/>
-                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="trailing" secondItem="8av-Sd-0Se" secondAttribute="trailing" id="vxV-l8-d0b"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="leading" secondItem="8av-Sd-0Se" secondAttribute="leading" id="5We-aE-UeF"/>
+                            <constraint firstItem="hDV-FM-dBJ" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="6X0-q1-gwb"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="trailing" secondItem="8av-Sd-0Se" secondAttribute="trailing" id="8Sq-Sa-iaB"/>
+                            <constraint firstItem="hDV-FM-dBJ" firstAttribute="centerX" secondItem="3JM-OP-mMi" secondAttribute="centerX" id="GeU-Wf-Tk1"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="top" secondItem="3JM-OP-mMi" secondAttribute="top" id="aXV-1S-eBZ"/>
+                            <constraint firstItem="iUx-ot-Yvx" firstAttribute="bottom" secondItem="8av-Sd-0Se" secondAttribute="bottom" id="t44-fG-3Xk"/>
+                            <constraint firstItem="hDV-FM-dBJ" firstAttribute="leading" secondItem="iUx-ot-Yvx" secondAttribute="leading" id="wdA-T8-1cN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8av-Sd-0Se"/>
                     </view>
@@ -61,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IX1-ky-D0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="442.5" y="242.95774647887325"/>
+            <point key="canvasLocation" x="438.75" y="239.78873239436621"/>
         </scene>
     </scenes>
 </document>
