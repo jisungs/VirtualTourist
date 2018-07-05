@@ -26,7 +26,7 @@ extension UIViewController {
     
     func save() {
         do {
-            try DataController.shared().saveContext()
+            try DataController.sharedInstance().saveContext()
         } catch {
             showAlert(title: "Error", message: "Error Occured: \(error) ")
         }
