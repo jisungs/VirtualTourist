@@ -18,6 +18,7 @@ class DataController {
     let backgroundContext:NSManagedObjectContext
     let context : NSManagedObjectContext
     let fileManager = FileManager.default
+    let dbURL : URL
     
     class func sharedInstance() -> DataController {
         struct Singleton {
@@ -58,35 +59,54 @@ class DataController {
         
         let fileManager = FileManager.default
         
-        func addStoreCoordinator(){
-            
+        guard let docUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Unable to reach the documents folder")
+            return nil
         }
         
-        func fetchPin(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Pin? {
-            let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-            fr.predicate = predicate
-            if let sorting = sorting {
-                fr.sortDescriptors = [sorting]
-            }
-            guard let pin = (try context.fetch(fr) as! [Pin]).first else {
-                return nil
-            }
-            return pin
-        }
+        self.dbURL = docUrl.appendingPathComponent("model.sqlite")
         
-        func fetchAllPins(_ predicate: NSPredicate? = nil, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Pin]? {
-            let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-            fr.predicate = predicate
-            if let sorting = sorting {
-                fr.sortDescriptors = [sorting]
-            }
-            guard let pin = try context.fetch(fr) as? [Pin] else {
-                return nil
-            }
-            return pin
+        // Options for migration
+        let options = [
+            NSInferMappingModelAutomaticallyOption: true,
+            NSMigratePersistentStoresAutomaticallyOption: true
+        ]
+        
+        do {
+            try addStoreCoordinator(NSSQLiteStoreType, configuration: nil, storeURL: dbURL, options: options as [NSObject : AnyObject]?)
+        } catch {
+            print("unable to add store at \(dbURL)")
         }
+       
     }
     
+    func addStoreCoordinator(_ storeType: String, configuration: String?, storeURL: URL, options : [NSObject:AnyObject]?) throws {
+        try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: dbURL, options: nil)
+    }
+    
+    func fetchPin(_ predicate: NSPredicate, entityName: String, sorting: NSSortDescriptor? = nil) throws -> Pin? {
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        fr.predicate = predicate
+        if let sorting = sorting {
+            fr.sortDescriptors = [sorting]
+        }
+        guard let pin = (try context.fetch(fr) as! [Pin]).first else {
+            return nil
+        }
+        return pin
+    }
+    
+    func fetchAllPins(_ predicate: NSPredicate? = nil, entityName: String, sorting: NSSortDescriptor? = nil) throws -> [Pin]? {
+        let fr = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        fr.predicate = predicate
+        if let sorting = sorting {
+            fr.sortDescriptors = [sorting]
+        }
+        guard let pin = try context.fetch(fr) as? [Pin] else {
+            return nil
+        }
+        return pin
+    }
     
    
 }

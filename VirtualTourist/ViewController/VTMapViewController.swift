@@ -16,8 +16,6 @@ class VTMapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var footerView: UIView!
-    @IBOutlet weak var editButton: UIBarButtonItem!
-    
     
     //MARK: - variable
     var annotations = [MKPointAnnotation]()
@@ -29,17 +27,11 @@ class VTMapViewController: UIViewController {
         super.viewDidLoad()
         mapView.delegate = self
         longPressRecongizers()
+        navigationItem.rightBarButtonItem = editButtonItem
         footerView.isHidden = true
     }
-
-    @IBAction func editButtonCliked(_ sender: Any) {
-        footerView.isHidden = false
-
-    }
-    
     
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer){
-       // showAlert(title: "long Pressed", message: "long Press succeeded")
         
         let location = sender.location(in: mapView)
         let locCoord = mapView.convert(location, toCoordinateFrom: mapView)
@@ -71,14 +63,47 @@ class VTMapViewController: UIViewController {
         longPressRecongizer.minimumPressDuration = 0.5
         longPressRecongizer.delegate = self as? UIGestureRecognizerDelegate
         mapView.addGestureRecognizer(longPressRecongizer)
-        
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        footerView.isHidden = !editing
     }
- 
-
+    
+    func loadAllPins() -> [Pin]?{
+        
+        var pins: [Pin]?
+        do {
+            try pins = DataController.sharedInstance().fetchAllPins(entityName: Pins.name)
+        } catch {
+            print("\(#function) error:\(error)")
+            showAlert(title: "Error", message: "Error while fetching pin")
+        }
+        return pins
+    }
+    
+    private func loadPin(latitude: String, longitude: String) -> Pin? {
+        let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", latitude, longitude)
+        var pin: Pin?
+        do {
+            try pin = DataController.sharedInstance().fetchPin(predicate, entityName: Pins.name)
+        } catch {
+            print("\(#function) error:\(error)")
+            showAlert(title: "Error", message: "Error while fetching location:\(error)")
+        }
+        return pin
+    }
+    
+    func showPins(_ pins: [Pin]) {
+        for pin in pins where pin.latitude != nil && pin.longitude != nil {
+            let annotation = MKPointAnnotation()
+            let lat = Double(pin.latitude!)!
+            let lon = Double(pin.longitude!)!
+            annotation.coordinate = CLLocationCoordinate2DMake(lat, lon)
+            mapView.addAnnotation(annotation)
+        }
+        mapView.showAnnotations(mapView.annotations, animated: true)
+    }
 }
 
 extension VTMapViewController: MKMapViewDelegate {
