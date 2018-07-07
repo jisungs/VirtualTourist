@@ -10,4 +10,7 @@ import Foundation
 
 import CoreData
 
-
+class Client {
+    
+    
+}
