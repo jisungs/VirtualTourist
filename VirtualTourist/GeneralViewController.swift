@@ -31,4 +31,10 @@ extension UIViewController {
             showAlert(title: "Error", message: "Error Occured: \(error) ")
         }
     }
+    
+    func performUIUpdatesOnMain(_ updates: @escaping () -> Void) {
+        DispatchQueue.main.async {
+            updates()
+        }
+    }
 }

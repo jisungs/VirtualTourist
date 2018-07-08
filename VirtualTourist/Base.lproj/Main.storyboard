@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="489.5" width="320" height="78.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Pin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuv-vH-tbS">
-                                        <rect key="frame" x="93" y="20" width="135" height="37"/>
+                                        <rect key="frame" x="93" y="20.5" width="135" height="37"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -74,7 +74,7 @@
                     <connections>
                         <outlet property="footerView" destination="hDV-FM-dBJ" id="NqR-8T-f4M"/>
                         <outlet property="mapView" destination="iUx-ot-Yvx" id="zmZ-em-6ah"/>
-                        <segue destination="0Fe-sg-vtL" kind="push" id="aCh-yl-d60"/>
+                        <segue destination="0Fe-sg-vtL" kind="push" identifier="showAlbum" id="aCh-yl-d60"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IX1-ky-D0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,7 +143,9 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQM-Wh-By2">
                                 <rect key="frame" x="0.0" y="524" width="319" height="44"/>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="EFd-lg-fkg"/>
                                     <barButtonItem title="New collection" style="plain" id="fFZ-qo-Slu"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LNQ-cE-Fbj"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -163,7 +165,7 @@
                     <navigationItem key="navigationItem" id="TGr-sR-m4o"/>
                     <connections>
                         <outlet property="activityIndicator" destination="OjB-Ig-SsP" id="wmL-g3-74D"/>
-                        <outlet property="button" destination="fFZ-qo-Slu" id="O25-4g-VGk"/>
+                        <outlet property="button" destination="fFZ-qo-Slu" id="7mJ-yc-eW3"/>
                         <outlet property="collectionView" destination="8Fr-wc-x0v" id="91p-Ma-BEC"/>
                         <outlet property="mapView" destination="LHb-7w-Kgc" id="NIt-wu-nR4"/>
                     </connections>
